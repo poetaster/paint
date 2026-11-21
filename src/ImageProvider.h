@@ -78,6 +78,8 @@ public:
         QByteArray format;
         QImageReader ir(filename);
 
+        ir.setAutoTransform(true);
+
         if (!ir.canRead())
             return img;
 
@@ -89,16 +91,23 @@ public:
 
         img = ir.read();
 
-        qDebug() << Q_FUNC_INFO << "image format:" << format;
+        //qDebug() << Q_FUNC_INFO << "image format:" << format;
 
         // @attah's concise solution to r<->b channel swap issues
+        // QImage::Format_RGB32);
+
         img = img.convertToFormat(QImage::Format_RGB888);
 
-        //img.convertToFormat()
-        NemoImageMetadata meta(filename, format);
+        // this will produce a swapped (blue tinted preview that then insert
+        // correctly
+        //img = img.rgbSwapped() ;
 
+        //img.convertToFormat()
+
+        NemoImageMetadata meta(filename, format);
         if (meta.orientation() != NemoImageMetadata::TopLeft)
             img = rotate(img, meta.orientation());
+
         if (requestedSize.isValid())
             return img.scaled(requestedSize.width(), requestedSize.height(), Qt::KeepAspectRatio);
         else
