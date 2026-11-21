@@ -9,8 +9,8 @@ Name:       harbour-paint
 %{!?qtc_make:%define qtc_make make}
 %{?qtc_builddir:%define _builddir %qtc_builddir}
 Summary:    Paint
-Version:    0.9.4
-Release:    2
+Version:    0.9.5
+Release:    1
 Group:      Qt/Qt
 License:    MIT
 URL:        https://github.com/kimmoli/paint
@@ -38,6 +38,10 @@ Custom:
  - Repo: https://github.com/kimmoli/paint
  - PackagingRepo: https://github.com/poetaster/paint
 Icon: https://raw.githubusercontent.com/kimmoli/paint/master/appicons/256x256/apps/harbour-paint.png
+Screenshots:
+ - https://github.com/poetaster/paint/raw/master/Screenshot_001.png
+ - https://github.com/poetaster/paint/raw/master/Screenshot_002.png
+ - https://github.com/poetaster/paint/raw/master/Screenshot_003.png
 Url:
  - Bugtracker: https://github.com/poetaster/paint/issues
 %endif
